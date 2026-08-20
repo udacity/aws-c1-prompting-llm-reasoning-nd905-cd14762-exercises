@@ -17,17 +17,4 @@ def lambda_handler(event, context):
     cuisines = sorted(set(r["cuisine"] for r in RESTAURANTS))
     result = {"cuisines": cuisines}
 
-    return {
-        "messageVersion": "1.0",
-        "response": {
-            "actionGroup": event["actionGroup"],
-            "function": event["function"],
-            "functionResponse": {
-                "responseBody": {
-                    "TEXT": {
-                        "body": json.dumps(result)
-                    }
-                }
-            },
-        },
-    }
+    return result

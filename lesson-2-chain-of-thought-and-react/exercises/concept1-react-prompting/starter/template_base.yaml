@@ -33,7 +33,7 @@ ${get_cuisines}
     Properties:
       FunctionName: !GetAtt GetCuisinesFunction.Arn
       Action: lambda:InvokeFunction
-      Principal: bedrock.amazonaws.com
+      git 
 
   SearchRestaurantsFunction:
     Type: AWS::Lambda::Function
@@ -51,7 +51,7 @@ ${search_restaurants}
     Properties:
       FunctionName: !GetAtt SearchRestaurantsFunction.Arn
       Action: lambda:InvokeFunction
-      Principal: bedrock.amazonaws.com
+      Principal: bedrock-agentcore.amazonaws.com
 
   GetAvailabilityFunction:
     Type: AWS::Lambda::Function
@@ -69,7 +69,7 @@ ${get_availability}
     Properties:
       FunctionName: !GetAtt GetAvailabilityFunction.Arn
       Action: lambda:InvokeFunction
-      Principal: bedrock.amazonaws.com
+      Principal: bedrock-agentcore.amazonaws.com
 
 Outputs:
   GetCuisinesFunctionArn:

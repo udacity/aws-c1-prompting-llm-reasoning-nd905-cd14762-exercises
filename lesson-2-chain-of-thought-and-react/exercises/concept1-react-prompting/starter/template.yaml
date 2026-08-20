@@ -49,27 +49,14 @@ Resources:
               cuisines = sorted(set(r["cuisine"] for r in RESTAURANTS))
               result = {"cuisines": cuisines}
 
-              return {
-                  "messageVersion": "1.0",
-                  "response": {
-                      "actionGroup": event["actionGroup"],
-                      "function": event["function"],
-                      "functionResponse": {
-                          "responseBody": {
-                              "TEXT": {
-                                  "body": json.dumps(result)
-                              }
-                          }
-                      },
-                  },
-              }
+              return result
 
   GetCuisinesPermission:
     Type: AWS::Lambda::Permission
     Properties:
       FunctionName: !GetAtt GetCuisinesFunction.Arn
       Action: lambda:InvokeFunction
-      Principal: bedrock.amazonaws.com
+      Principal: bedrock-agentcore.amazonaws.com
 
   SearchRestaurantsFunction:
     Type: AWS::Lambda::Function
@@ -108,27 +95,14 @@ Resources:
               else:
                   result = {"restaurants": RESTAURANTS}
 
-              return {
-                  "messageVersion": "1.0",
-                  "response": {
-                      "actionGroup": event["actionGroup"],
-                      "function": event["function"],
-                      "functionResponse": {
-                          "responseBody": {
-                              "TEXT": {
-                                  "body": json.dumps(result)
-                              }
-                          }
-                      },
-                  },
-              }
+              return result
 
   SearchRestaurantsPermission:
     Type: AWS::Lambda::Permission
     Properties:
       FunctionName: !GetAtt SearchRestaurantsFunction.Arn
       Action: lambda:InvokeFunction
-      Principal: bedrock.amazonaws.com
+      Principal: bedrock-agentcore.amazonaws.com
 
   GetAvailabilityFunction:
     Type: AWS::Lambda::Function
@@ -164,27 +138,14 @@ Resources:
                   "available": available,
               }
 
-              return {
-                  "messageVersion": "1.0",
-                  "response": {
-                      "actionGroup": event["actionGroup"],
-                      "function": event["function"],
-                      "functionResponse": {
-                          "responseBody": {
-                              "TEXT": {
-                                  "body": json.dumps(result)
-                              }
-                          }
-                      },
-                  },
-              }
+              return result
 
   GetAvailabilityPermission:
     Type: AWS::Lambda::Permission
     Properties:
       FunctionName: !GetAtt GetAvailabilityFunction.Arn
       Action: lambda:InvokeFunction
-      Principal: bedrock.amazonaws.com
+      Principal: bedrock-agentcore.amazonaws.com
 
 Outputs:
   GetCuisinesFunctionArn:

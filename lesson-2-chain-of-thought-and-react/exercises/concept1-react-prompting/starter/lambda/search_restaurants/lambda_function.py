@@ -26,17 +26,4 @@ def lambda_handler(event, context):
     else:
         result = {"restaurants": RESTAURANTS}
 
-    return {
-        "messageVersion": "1.0",
-        "response": {
-            "actionGroup": event["actionGroup"],
-            "function": event["function"],
-            "functionResponse": {
-                "responseBody": {
-                    "TEXT": {
-                        "body": json.dumps(result)
-                    }
-                }
-            },
-        },
-    }
+    return result
