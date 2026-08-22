@@ -45,6 +45,7 @@ def generate() -> None:
         get_cuisines=indented(SCRIPT_DIR / 'lambda/get_cuisines/lambda_function.py'),
         search_restaurants=indented(SCRIPT_DIR / 'lambda/search_restaurants/lambda_function.py'),
         get_availability=indented(SCRIPT_DIR / 'lambda/get_availability/lambda_function.py'),
+        get_description=indented(SCRIPT_DIR / 'lambda/get_description/lambda_function.py'),
     )
     OUTPUT_TEMPLATE.write_text(GENERATED_HEADER + result)
     print(f"Generated {OUTPUT_TEMPLATE.name}")

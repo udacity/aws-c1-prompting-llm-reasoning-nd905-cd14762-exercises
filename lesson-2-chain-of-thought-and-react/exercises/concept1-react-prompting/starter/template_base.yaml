@@ -71,6 +71,24 @@ ${get_availability}
       Action: lambda:InvokeFunction
       Principal: bedrock-agentcore.amazonaws.com
 
+  GetDescriptionFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: get-description
+      Runtime: python3.12
+      Handler: index.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+${get_description}
+
+  GetDescriptionPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !GetAtt GetDescriptionFunction.Arn
+      Action: lambda:InvokeFunction
+      Principal: bedrock-agentcore.amazonaws.com
+
 Outputs:
   GetCuisinesFunctionArn:
     Description: ARN of the get-cuisines Lambda function
@@ -83,3 +101,7 @@ Outputs:
   GetAvailabilityFunctionArn:
     Description: ARN of the get-availability Lambda function
     Value: !GetAtt GetAvailabilityFunction.Arn
+
+  GetDescriptionFunctionArn:
+    Description: ARN of the get-description Lambda function
+    Value: !GetAtt GetDescriptionFunction.Arn

@@ -1,5 +1,8 @@
 **/.DS_Store
 **/planning.md
+**/__pycache__/
+**/*.pyc
+**/response.json
 lesson-4-prompt-refinement/demos/demo3-evals/eval_responses.jsonl
 demo_guides/*
 scripts/*
