@@ -33,7 +33,7 @@ ${get_cuisines}
     Properties:
       FunctionName: !GetAtt GetCuisinesFunction.Arn
       Action: lambda:InvokeFunction
-      git 
+      Principal: bedrock-agentcore.amazonaws.com
 
   SearchRestaurantsFunction:
     Type: AWS::Lambda::Function

@@ -14,6 +14,7 @@ AVAILABILITY = {
 
 
 def lambda_handler(event, context):
+    print("EVENT:", json.dumps(event, default=str))
     parameters = {p["name"]: p["value"] for p in event.get("parameters", [])}
     restaurant_id = parameters.get("restaurant_id", "")
 

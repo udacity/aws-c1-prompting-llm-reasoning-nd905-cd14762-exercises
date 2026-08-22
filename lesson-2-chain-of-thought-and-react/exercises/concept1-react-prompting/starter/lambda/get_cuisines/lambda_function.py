@@ -14,6 +14,7 @@ RESTAURANTS = [
 
 
 def lambda_handler(event, context):
+    print("EVENT:", json.dumps(event, default=str))
     cuisines = sorted(set(r["cuisine"] for r in RESTAURANTS))
     result = {"cuisines": cuisines}
 
